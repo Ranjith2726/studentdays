@@ -19,13 +19,17 @@ app.get("/", (req, res) => {
 app.use("/api/contact", require("./routes/contactRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/offers", require("./routes/offerRoutes"));
+c// ====================== SERVE FRONTEND ======================
 const path = require('path');
+
+// Serve static files (CSS, JS, images)
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// This is the important fix
-app.use((req, res) => {
+// This should be the LAST route
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
+// ===========================================================
 
 const PORT = process.env.PORT || 5000;
 
