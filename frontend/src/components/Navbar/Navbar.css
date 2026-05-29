@@ -103,3 +103,48 @@
   object-fit: contain;
   display: block;
 }
+/* MOBILE NAVBAR */
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .navbar-logo img {
+    width: 100px;
+    height: auto;
+  }
+
+  .navbar-links {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-link-btn {
+    display: block !important;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .navbar-btn {
+    width: 140px;
+    padding: 12px;
+    font-size: 15px;
+  }
+}
