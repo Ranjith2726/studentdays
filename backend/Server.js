@@ -20,10 +20,10 @@ app.use("/api/contact", require("./routes/contactRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/offers", require("./routes/offerRoutes"));
 const path = require('path');
-
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-app.get('/*', (req, res) => {
+// This is the important fix
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
