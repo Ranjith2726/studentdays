@@ -10,13 +10,13 @@ RUN cd backend && npm ci --only=production
 COPY frontend/package*.json ./frontend/
 RUN cd frontend && npm install
 
-# Copy frontend source + build
+# Copy all source
 COPY frontend/ ./frontend/
-RUN cd frontend && npm run build
-
-# Copy backend
 COPY backend/ ./backend/
+
+# Build frontend AFTER all source is copied
+RUN cd frontend && npm run build
 
 EXPOSE 5000
 
-CMD ["npm", "start", "--prefix", "backend"]
+CMD ["node", "backend/Server.js"]

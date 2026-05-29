@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "/api/auth";
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(
@@ -107,4 +107,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};  
+};

@@ -28,7 +28,7 @@ const CTA = () => {
       setLoading(true);
       setError("");
 
-      await axios.post("http://localhost:5000/api/contact", formData);
+      await axios.post("/api/contact", formData);
 
       setSubmitted(true);
     } catch (err) {
