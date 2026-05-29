@@ -25,6 +25,7 @@ app.use("/api/offers", require("./routes/offerRoutes"));
 // ====================== SERVE FRONTEND ======================
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
+// Catch-all route using app.use (this is more reliable)
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
@@ -38,12 +39,12 @@ mongoose
   .then(() => {
     console.log("MongoDB Connected");
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`✅ Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
     console.log("MongoDB Connection Error:", error.message);
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT} (DB not connected)`);
+      console.log(`⚠️ Server running on port ${PORT} (without MongoDB)`);
     });
   });
