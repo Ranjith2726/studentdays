@@ -1,31 +1,39 @@
-# ====================== Dockerfile ======================
+# ====================== Multi-Stage Dockerfile ======================
 
-# Use Node.js official image
+# Stage 1: Build Frontend
+FROM node:20-alpine AS frontend-builder
+
+WORKDIR /app/frontend
+
+COPY frontend/package*.json ./
+RUN npm ci --only=production=false
+
+COPY frontend/ ./
+RUN npm run build
+
+# Stage 2: Production Backend
 FROM node:20-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy backend package files
+COPY backend/package*.json ./backend/
 COPY package*.json ./
 
-# Install backend dependencies
+# Install only production dependencies
 RUN npm ci --only=production
 
 # Copy backend code
 COPY backend/ ./backend/
 
-# Copy frontend code
-COPY frontend/ ./frontend/
-
-# Build the frontend
-RUN cd frontend && npm ci && npm run build
+# Copy built frontend from previous stage
+COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
 # Expose port
 EXPOSE 5000
 
-# Set environment
+# Environment
 ENV NODE_ENV=production
 
-# Start the backend
+# Start command
 CMD ["node", "backend/Server.js"]
