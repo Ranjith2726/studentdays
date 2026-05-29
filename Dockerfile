@@ -1,22 +1,31 @@
+# ====================== Dockerfile ======================
+
+# Use Node.js official image
 FROM node:20-alpine
 
+# Set working directory
 WORKDIR /app
 
-# ================== BACKEND SETUP ==================
-COPY backend/package*.json ./backend/
-RUN cd backend && npm ci --only=production
+# Copy package files
+COPY package*.json ./
 
-# ================== FRONTEND SETUP ==================
-COPY frontend/package*.json ./frontend/
-RUN cd frontend && npm install   # ← Changed from npm ci
+# Install backend dependencies
+RUN npm ci --only=production
 
-# Copy frontend source and build it
-COPY frontend/ ./frontend/
-RUN cd frontend && npm run build
-
-# Copy backend source
+# Copy backend code
 COPY backend/ ./backend/
 
+# Copy frontend code
+COPY frontend/ ./frontend/
+
+# Build the frontend
+RUN cd frontend && npm ci && npm run build
+
+# Expose port
 EXPOSE 5000
 
-CMD ["npm", "start", "--prefix", "backend"]
+# Set environment
+ENV NODE_ENV=production
+
+# Start the backend
+CMD ["node", "backend/Server.js"]
