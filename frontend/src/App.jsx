@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -8,48 +9,36 @@ import Stories from "./components/Stories/Stories";
 import Community from "./components/Community/Community";
 import CTA from "./components/CTA/CTA";
 import Footer from "./components/Footer/Footer";
-import Login from "./components/Login/Login";
 
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-
   const { token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const protectAction = (e) => {
+  const protectWebsite = (e) => {
     if (token) return;
 
-    const clickedInsideLogin = e.target.closest(".login-popup");
-
-    if (clickedInsideLogin) return;
+    const clickedNavbar = e.target.closest(".navbar");
+    if (clickedNavbar) return;
 
     e.preventDefault();
-
-    setShowLogin(true);
+    navigate("/login");
   };
 
   return (
     <>
-      {showLogin && (
-        <Login setShowLogin={setShowLogin} />
-      )}
+      <Navbar />
 
-      <div onClickCapture={protectAction}>
-
-        <Navbar setShowLogin={setShowLogin} />
-
-        <main>
-          <Hero />
-          <About />
-          <Experiences />
-          <Stories />
-          <Community />
-          <CTA />
-          <Footer />
-        </main>
-
-      </div>
+      <main onClickCapture={protectWebsite}>
+        <Hero />
+        <About />
+        <Experiences />
+        <Stories />
+        <Community />
+        <CTA />
+        <Footer />
+      </main>
     </>
   );
 }

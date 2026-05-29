@@ -8,7 +8,11 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    let { name, email, password } = req.body;
+
+    name = name?.trim();
+    email = email?.trim().toLowerCase();
+    password = password?.trim();
 
     if (!name || !email || !password) {
       return res.status(400).json({
@@ -17,12 +21,19 @@ router.post("/register", async (req, res) => {
       });
     }
 
+    if (password.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must be at least 6 characters",
+      });
+    }
+
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "User already exists",
+        message: "User already exists. Please login.",
       });
     }
 
@@ -34,11 +45,9 @@ router.post("/register", async (req, res) => {
       password: hashedPassword,
     });
 
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.status(201).json({
       success: true,
@@ -51,16 +60,21 @@ router.post("/register", async (req, res) => {
       },
     });
   } catch (error) {
+    console.log("REGISTER ERROR:", error);
+
     res.status(500).json({
       success: false,
-      message: "Server error",
+      message: error.message || "Registration failed",
     });
   }
 });
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    let { email, password } = req.body;
+
+    email = email?.trim().toLowerCase();
+    password = password?.trim();
 
     if (!email || !password) {
       return res.status(400).json({
@@ -87,11 +101,9 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.status(200).json({
       success: true,
@@ -104,9 +116,11 @@ router.post("/login", async (req, res) => {
       },
     });
   } catch (error) {
+    console.log("LOGIN ERROR:", error);
+
     res.status(500).json({
       success: false,
-      message: "Server error",
+      message: error.message || "Login failed",
     });
   }
 });

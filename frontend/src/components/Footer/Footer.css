@@ -133,3 +133,18 @@
     text-align: center;
   }
 }
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}

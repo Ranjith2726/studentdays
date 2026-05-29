@@ -1,24 +1,37 @@
 import "./Experiences.css";
 
+import img1 from "../../assets/img1.png";
+import img2 from "../../assets/img2.png";
+import img3 from "../../assets/img3.png";
+import img4 from "../../assets/img4.png";
+import video1 from "../../assets/video1.mp4";
+
 const Experiences = () => {
   const trips = [
     {
-      title: "Goa Escape",
-      desc: "Sunsets, beaches, music nights, hostel stories, and unforgettable student memories.",
-      image:
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1974&auto=format&fit=crop",
+      type: "image",
+      desc: "Adventure, teamwork, excitement, and unforgettable moments shared with friends.",
+      image: img1,
     },
     {
-      title: "Hyderabad Nights",
-      desc: "Late-night drives, rooftop talks, food walks, city lights, and student-only hangouts.",
-      image:
-        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=1974&auto=format&fit=crop",
+      type: "image",
+      desc: "Friendships, laughter, togetherness, and memories that last beyond college.",
+      image: img2,
     },
     {
-      title: "Araku Diaries",
-      desc: "Foggy mountains, train windows, chai breaks, peaceful mornings, and new friendships.",
-      image:
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop",
+      type: "image",
+      desc: "Peaceful views, travel experiences, nature, and beautiful student journeys.",
+      image: img3,
+    },
+    {
+      type: "image",
+      desc: "Exploring new places, creating stories, and building lifelong connections.",
+      image: img4,
+    },
+    {
+      type: "video",
+      desc: "Real student moments, travel memories, and experiences captured beautifully.",
+      video: video1,
     },
   ];
 
@@ -41,15 +54,30 @@ const Experiences = () => {
 
       <div className="experience-grid">
         {trips.map((trip, index) => (
-          <article className="experience-card" key={index}>
-            <img src={trip.image} alt={trip.title} />
+          <article
+            className="experience-card"
+            key={index}
+            style={{ animationDelay: `${index * 0.15}s` }}
+          >
+            {trip.type === "video" ? (
+              <video
+                src={trip.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <img
+                src={trip.image}
+                alt={`StudentDays experience ${index + 1}`}
+              />
+            )}
 
             <div className="experience-overlay">
               <span className="experience-number">0{index + 1}</span>
 
-              <h3>{trip.title}</h3>
-
-              <p>{trip.desc}</p>
+              <p className="experience-description">{trip.desc}</p>
 
               <button className="primary-btn">Explore →</button>
             </div>

@@ -48,7 +48,7 @@ const CTA = () => {
           <h2>Form Submitted Successfully</h2>
 
           <p>
-            Thank you for joining StudentDesk.co. Our team will contact you soon
+            Thank you for joining StudentDays.co. Our team will contact you soon
             with the next steps.
           </p>
 
@@ -74,7 +74,7 @@ const CTA = () => {
   return (
     <section className="cta" id="join">
       <div className="cta-content">
-        <p className="cta-small-text">Join StudentDesk.co</p>
+        <p className="cta-small-text">Join StudentDays.co</p>
 
         <h2>
           Start your <span className="gradient-text">journey.</span>

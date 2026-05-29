@@ -6,26 +6,34 @@ const Hero = () => {
       <div className="hero-overlay"></div>
 
       <div className="hero-content">
-        <p className="hero-tag">A Student-Life Movement</p>
+        <p className="hero-tag">
+          A STUDENT-LIFE MOVEMENT
+        </p>
 
         <h1 className="hero-title">
-          Student life was never meant to be lived{" "}
-          <span className="gradient-text">only inside campus.</span>
+          Student life was never meant
+          <br />
+          to be lived
+          <br />
+          <span className="gradient-text">
+            only inside campus.
+          </span>
         </h1>
 
         <p className="hero-desc">
-          StudentDesk.co helps students create memories, friendships,
-          experiences, and stories they will remember forever.
+          StudentDays.co helps students create memories,
+          friendships, experiences, trips, and stories
+          that last far beyond college life.
         </p>
 
-        <div className="hero-actions">
-          <a href="#join" className="primary-btn">
-            Join StudentDesk.co
-          </a>
+        <div className="hero-buttons">
+          <button className="hero-btn-primary">
+            Join StudentDays.co →
+          </button>
 
-          <a href="#experiences" className="secondary-btn">
+          <button className="hero-btn-secondary">
             Explore Experiences
-          </a>
+          </button>
         </div>
       </div>
     </section>

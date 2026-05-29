@@ -7,6 +7,7 @@ import App from "./App";
 import Experiences from "./components/Experiences/Experiences";
 import Stories from "./components/Stories/Stories";
 import OurOffers from "./components/OurOffers/OurOffers";
+import Login from "./components/Login/Login";
 
 import ScrollToTop from "./ScrollToTop";
 
@@ -18,11 +19,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-
         <ScrollToTop />
 
         <Routes>
           <Route path="/" element={<App />} />
+
+          <Route path="/login" element={<Login />} />
 
           <Route path="/experiences" element={<Experiences />} />
 
@@ -30,7 +32,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
           <Route path="/offers" element={<OurOffers />} />
         </Routes>
-
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>

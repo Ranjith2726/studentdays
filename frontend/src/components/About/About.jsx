@@ -1,5 +1,8 @@
 import "./About.css";
 
+import about1 from "../../assets/about/about1.png";
+import about2 from "../../assets/about/about2.png";
+
 const About = () => {
   return (
     <section id="about" className="about">
@@ -8,7 +11,7 @@ const About = () => {
 
       <div className="about-container">
         <div className="about-left">
-          <p className="about-tag">/ Our Why</p>
+          <p className="about-tag">/ Our Offers</p>
 
           <h2 className="section-title">
             More than trips. <br />
@@ -31,19 +34,27 @@ const About = () => {
             <div className="about-card">
               <span>01</span>
               <h3>Real Friendships</h3>
-              <p>Meet students from different colleges and build your circle.</p>
+              <p>
+                Meet students from different colleges and build meaningful
+                connections.
+              </p>
             </div>
 
             <div className="about-card">
               <span>02</span>
               <h3>Cinematic Memories</h3>
-              <p>Trips, reels, photos, and stories captured like a film.</p>
+              <p>
+                Professional photos, reels, travel stories, and unforgettable
+                experiences.
+              </p>
             </div>
 
             <div className="about-card">
               <span>03</span>
               <h3>Student Friendly</h3>
-              <p>Safe groups, budget plans, and curated experiences.</p>
+              <p>
+                Safe communities, affordable plans, and student-focused events.
+              </p>
             </div>
           </div>
         </div>
@@ -51,15 +62,15 @@ const About = () => {
         <div className="about-right">
           <div className="about-photo main-photo">
             <img
-              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop"
-              alt="Students enjoying trip"
+              src={about1}
+              alt="StudentDays Experience"
             />
           </div>
 
           <div className="about-photo small-photo">
             <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
-              alt="Travel experience"
+              src={about2}
+              alt="StudentDays Community"
             />
           </div>
 

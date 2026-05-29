@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
+console.log("Server file started...");
+
 const app = express();
 
 app.use(cors());
@@ -16,8 +18,11 @@ app.get("/", (req, res) => {
 
 app.use("/api/contact", require("./routes/contactRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/offers", require("./routes/offerRoutes"));
 
 const PORT = process.env.PORT || 5000;
+
+console.log("Trying MongoDB connection...");
 
 mongoose
   .connect(process.env.MONGO_URI)

@@ -1,17 +1,26 @@
 import "./Navbar.css";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import logo from "../../assets/logo.png";
 
-const Navbar = ({ setShowLogin }) => {
+const Navbar = () => {
   const { token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const handleScrollNav = (e, id) => {
     e.preventDefault();
 
     if (!token) {
-      setShowLogin(true);
+      navigate("/login");
       return;
     }
 
@@ -36,7 +45,7 @@ const Navbar = ({ setShowLogin }) => {
     e.preventDefault();
 
     if (!token) {
-      setShowLogin(true);
+      navigate("/login");
       return;
     }
 
@@ -45,9 +54,9 @@ const Navbar = ({ setShowLogin }) => {
 
   return (
     <header className="navbar">
-      <Link to="/" className="navbar-logo">
-        StudentDesk<span>.co</span>
-      </Link>
+      <div className="navbar-logo" onClick={handleLogoClick}>
+        <img src={logo} alt="StudentDays.co Logo" />
+      </div>
 
       <nav className="navbar-links">
         <button
@@ -87,11 +96,17 @@ const Navbar = ({ setShowLogin }) => {
       </nav>
 
       {!token ? (
-        <button className="navbar-btn" onClick={() => setShowLogin(true)}>
+        <button
+          className="navbar-btn"
+          onClick={() => navigate("/login")}
+        >
           Login →
         </button>
       ) : (
-        <button className="navbar-btn" onClick={logout}>
+        <button
+          className="navbar-btn"
+          onClick={logout}
+        >
           Logout
         </button>
       )}

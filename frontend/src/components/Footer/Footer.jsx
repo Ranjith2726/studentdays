@@ -1,20 +1,23 @@
+import logo from "../../assets/logo.png";
 import "./Footer.css";
 
 const Footer = () => {
   return (
     <footer className="footer">
-
       <div className="footer-top">
 
         <div className="footer-brand">
-          <h2>
-            Student<span>Days</span>
-          </h2>
+          <div className="footer-logo">
+            <img
+              src={logo}
+              alt="StudentDays Logo"
+            />
+          </div>
 
           <p>
-            A student lifestyle and experience community
-            helping students create unforgettable memories,
-            friendships, trips, and stories.
+            A student lifestyle and experience community helping
+            students create unforgettable memories, friendships,
+            trips, and stories.
           </p>
         </div>
 
@@ -41,9 +44,13 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Contact</h4>
 
-            <a href="/">StudentDays.co@gmail.com</a>
-            <a href="/">+91 9876543210</a>
-            <a href="/">Hyderabad, India</a>
+            <a href="mailto:StudentDays.co@gmail.com">
+              StudentDays.co@gmail.com
+            </a>
+
+            <a href="/">
+              Hyderabad, India
+            </a>
           </div>
 
         </div>
@@ -59,7 +66,6 @@ const Footer = () => {
           live it. love it. remember it.
         </span>
       </div>
-
     </footer>
   );
 };

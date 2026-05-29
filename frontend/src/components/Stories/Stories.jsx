@@ -1,30 +1,27 @@
 import "./Stories.css";
 
+import story1 from "../../assets/stories/stories1.png";
+import story2 from "../../assets/stories/stories2.png";
+
 const Stories = () => {
   const stories = [
     {
-      name: "Ananya",
-      role: "2nd Year Student",
+      name: "Rohith Pallika",
+      role: "Adventure Explorer",
       quote:
-        "I came alone for my first StudentDays.co experience. By the end of the trip, I had friends, pictures, and memories I still talk about.",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop",
+        "From snowy mountains to unforgettable moments, every journey became a story worth remembering.",
+      info:
+        "Passionate about travel, nature, and creating lifelong memories with friends through unique student experiences.",
+      image: story1,
     },
     {
-      name: "Rohit",
-      role: "BTech Student",
+      name: "Amrita Pandey",
+      role: "Travel Enthusiast",
       quote:
-        "College was becoming only classes and assignments. StudentDays.co gave me travel, friends, fun, and real confidence.",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      name: "Meera",
-      role: "Engineering Student",
-      quote:
-        "The best part was the community. I met people from different colleges and finally felt like I belonged somewhere.",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop",
+        "The best experiences are not about destinations, but the people, conversations, and memories made along the way.",
+      info:
+        "Loves exploring new places, meeting new people, and turning simple moments into unforgettable adventures.",
+      image: story2,
     },
   ];
 
@@ -42,8 +39,8 @@ const Stories = () => {
 
         <p className="stories-subtitle">
           StudentDays.co is not only about travelling. It is about people,
-          confidence, conversations, friendships, and memories that stay with you
-          after college.
+          confidence, conversations, friendships, and memories that stay with
+          you long after the journey ends.
         </p>
       </div>
 
@@ -55,14 +52,23 @@ const Stories = () => {
             </div>
 
             <div className="story-content">
-              <span className="story-number">0{index + 1}</span>
+              <span className="story-number">
+                0{index + 1}
+              </span>
 
-              <p className="story-quote">“{story.quote}”</p>
+              <p className="story-quote">
+                "{story.quote}"
+              </p>
 
               <div className="story-profile">
                 <div>
                   <h3>{story.name}</h3>
+
                   <p>{story.role}</p>
+
+                  <span className="story-extra">
+                    {story.info}
+                  </span>
                 </div>
 
                 <span className="story-arrow">→</span>
