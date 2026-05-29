@@ -110,15 +110,16 @@
     margin: 8px auto;
     padding: 8px 12px;
     border-radius: 24px;
+    min-height: auto !important;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
 
   .navbar-logo img {
-    width: 55px;
+    width: 50px;
     height: auto;
   }
 
@@ -126,25 +127,22 @@
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 4px 12px;
-    width: 100%;
+    gap: 4px 10px;
     margin: 0;
+    padding: 0;
   }
 
   .nav-link-btn {
     font-size: 11px;
-    font-weight: 600;
-    padding: 2px 3px;
+    padding: 1px 3px;
     margin: 0;
-    border: none;
-    background: transparent;
+    line-height: 1.2;
   }
 
   .navbar-btn {
-    width: 90px;
-    height: 32px;
-    font-size: 12px;
-    border-radius: 18px;
+    width: 85px;
+    height: 30px;
+    font-size: 11px;
     margin-top: 2px;
   }
 }
