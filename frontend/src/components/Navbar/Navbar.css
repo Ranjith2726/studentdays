@@ -106,19 +106,19 @@
 /* MOBILE NAVBAR */
 @media screen and (max-width: 768px) {
   .navbar {
-    width: 94%;
-    margin: 15px auto;
-    padding: 15px;
-    border-radius: 30px;
+    width: 95%;
+    margin: 10px auto;
+    padding: 12px 15px;
+    border-radius: 28px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
   }
 
   .navbar-logo img {
-    width: 70px;
+    width: 65px;
     height: auto;
   }
 
@@ -126,23 +126,24 @@
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px 16px;
+    gap: 6px 14px;
     width: 100%;
+    margin-top: 4px;
   }
 
   .nav-link-btn {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    padding: 4px 6px;
-    background: transparent;
+    padding: 2px 4px;
     border: none;
+    background: transparent;
   }
 
   .navbar-btn {
-    width: 120px;
-    height: 42px;
-    font-size: 14px;
-    border-radius: 25px;
-    padding: 0;
+    width: 110px;
+    height: 38px;
+    font-size: 13px;
+    border-radius: 20px;
+    margin-top: 4px;
   }
 }
